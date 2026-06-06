@@ -259,7 +259,7 @@
 <script>
     (function() {
         var path = window.location.pathname;
-        var inviteMatch = path.match(/^\/invite\/([A-Za-z2-9]+)\/?$/);
+        var inviteMatch = path.match(/^\/invite\/([A-Za-z0-9]+)\/?$/);
         var isAndroid = /Android/i.test(navigator.userAgent);
 
         if (inviteMatch) {
