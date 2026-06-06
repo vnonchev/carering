@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareRing</title>
+    <meta name="description" content="CareRing helps families coordinate caregiving with medication tracking, task management, and daily check-ins.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            color: #2d3748;
+            line-height: 1.7;
+            background: #f7f8fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        nav {
+            background: #0D7377;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        nav .logo {
+            color: #fff;
+            font-size: 1.35rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        nav .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-left: 1.5rem;
+            transition: color 0.2s;
+        }
+        nav .nav-links a:hover { color: #fff; }
+        .content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1.5rem;
+        }
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(13, 115, 119, 0.08);
+        }
+        .card-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #0D7377 0%, #0a5c5f 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .card-icon svg {
+            width: 36px;
+            height: 36px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .card h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+        }
+        .card p {
+            color: #4a5568;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .invite-code {
+            display: inline-block;
+            background: #f0fafa;
+            border: 2px dashed #0D7377;
+            border-radius: 10px;
+            padding: 0.6rem 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            letter-spacing: 0.15em;
+            color: #0D7377;
+            margin-bottom: 0.75rem;
+        }
+        .invite-hint {
+            color: #718096;
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+        }
+        .store-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #1a202c;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.85rem 1.75rem;
+            border-radius: 12px;
+            transition: background 0.2s, transform 0.15s;
+            margin-bottom: 1rem;
+        }
+        .store-badge:hover {
+            background: #2d3748;
+            transform: translateY(-1px);
+        }
+        .store-badge svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
+        .store-badge .badge-text {
+            text-align: left;
+        }
+        .store-badge .badge-text small {
+            display: block;
+            font-size: 0.65rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .store-badge .badge-text span {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 0;
+            text-align: left;
+        }
+        .features-list li {
+            padding: 0.35rem 0;
+            font-size: 0.9rem;
+            color: #4a5568;
+        }
+        .features-list li::before {
+            content: "\2713 ";
+            color: #0D7377;
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+        .home-link {
+            display: inline-block;
+            color: #0D7377;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            transition: color 0.2s;
+        }
+        .home-link:hover { color: #0a5c5f; }
+        footer {
+            background: #1a202c;
+            color: rgba(255,255,255,0.7);
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        footer a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin: 0 0.75rem;
+            transition: color 0.2s;
+        }
+        footer a:hover { color: #fff; }
+        .hidden { display: none; }
+        @media (max-width: 480px) {
+            nav { flex-direction: column; gap: 0.5rem; }
+            .card { padding: 2rem 1.5rem; }
+            .card h1 { font-size: 1.35rem; }
+            .invite-code { font-size: 1.25rem; padding: 0.5rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/" class="logo">CareRing</a>
+    <div class="nav-links">
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#download">Download</a>
+    </div>
+</nav>
+
+<div class="content">
+    <!-- Invite page -->
+    <div class="card hidden" id="invite-page">
+        <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+                <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <line x1="19" y1="8" x2="19" y2="14"/>
+                <line x1="22" y1="11" x2="16" y2="11"/>
+            </svg>
+        </div>
+        <h1>You've been invited to a Care Circle</h1>
+        <p>Someone wants you to join their care team on CareRing. Download the app and enter your invite code to get started.</p>
+        <div class="invite-code" id="invite-code"></div>
+        <div class="invite-hint">Enter this code in the app after signing in</div>
+        <a href="https://play.google.com/store/apps/details?id=app.carering" class="store-badge" id="store-link" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24">
+                <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zM14.852 13.06l2.34 2.34-10.848 6.15 8.508-8.49zM20.16 10.6c.6.34.84.94.84 1.4s-.24 1.06-.84 1.4l-2.76 1.56-2.58-2.58 2.58-2.58 2.76 1.56zM6.344 3.444L17.192 9.6l-2.34 2.34-8.508-8.496z"/>
+            </svg>
+            <div class="badge-text">
+                <small>Get it on</small>
+                <span>Google Play</span>
+            </div>
+        </a>
+        <ul class="features-list">
+            <li>Coordinate medication schedules together</li>
+            <li>Share tasks and appointments</li>
+            <li>Track daily check-ins and health trends</li>
+            <li>Real-time updates across your care team</li>
+        </ul>
+    </div>
+
+    <!-- Generic 404 page -->
+    <div class="card hidden" id="notfound-page">
+        <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+        </div>
+        <h1>Page Not Found</h1>
+        <p>The page you're looking for doesn't exist. Head back to the homepage to learn more about CareRing.</p>
+        <a href="/" class="home-link">&larr; Back to CareRing</a>
+    </div>
+</div>
+
+<footer>
+    <div>
+        <a href="/privacy/">Privacy Policy</a>
+        <a href="/terms/">Terms of Service</a>
+    </div>
+    <div style="margin-top: 0.75rem;">&copy; 2026 CareRing. All rights reserved.</div>
+</footer>
+
+<script>
+    (function() {
+        var path = window.location.pathname;
+        var inviteMatch = path.match(/^\/invite\/([A-Za-z2-9]+)\/?$/);
+        var isAndroid = /Android/i.test(navigator.userAgent);
+
+        if (inviteMatch) {
+            var code = inviteMatch[1].toUpperCase();
+            document.getElementById('invite-code').textContent = code;
+            document.getElementById('invite-page').classList.remove('hidden');
+            document.title = 'Join a Care Circle - CareRing';
+
+            if (isAndroid) {
+                var storeUrl = 'https://play.google.com/store/apps/details?id=app.carering';
+                var intentUrl = 'intent://carering.app/invite/' + code
+                    + '#Intent;scheme=https;package=app.carering;'
+                    + 'S.browser_fallback_url=' + encodeURIComponent(storeUrl) + ';end';
+                window.location.replace(intentUrl);
+            }
+        } else if (path.match(/^\/invite\/?$/)) {
+            document.getElementById('invite-code').textContent = '------';
+            document.getElementById('invite-page').classList.remove('hidden');
+            document.title = 'Join a Care Circle - CareRing';
+        } else {
+            document.getElementById('notfound-page').classList.remove('hidden');
+            document.title = 'Page Not Found - CareRing';
+        }
+    })();
+</script>
+
+</body>
+</html>
