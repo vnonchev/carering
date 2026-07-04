@@ -3,323 +3,704 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareRing — Family Care Coordinator</title>
-    <meta name="description" content="Coordinate family caregiving with shared medications, tasks, check-ins and care notes. Free for families.">
-    <link rel="icon" type="image/png" href="/favicon.png">
+    <title>CareRing - Family Caregiving, Coordinated</title>
+    <meta name="description" content="CareRing helps families coordinate caregiving with medication tracking, task management, appointment scheduling, and daily check-ins. Available on Android and Wear OS.">
+    <link rel="canonical" href="https://carering.app/">
+    <link rel="icon" type="image/png" href="/img/app-icon.png">
+    <link rel="apple-touch-icon" href="/img/app-icon.png">
     <style>
-        :root {
-            --teal: #0D7377;
-            --teal-light: #0f8a8e;
-            --coral: #E85D4A;
-            --bg: #FAFAFA;
-            --text: #1a1a1a;
-            --text-secondary: #555;
-            --card-bg: #fff;
-        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: var(--text);
-            background: var(--bg);
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            color: #2d3748;
+            line-height: 1.7;
+            background: #fff;
         }
 
-        /* Nav */
+        /* --- Navigation --- */
         nav {
+            background: #0D7377;
+            padding: 1rem 1.5rem;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px 24px;
+            justify-content: space-between;
         }
-        .logo {
-            font-size: 1.5rem;
+        nav .logo {
+            color: #fff;
+            font-size: 1.35rem;
             font-weight: 700;
-            color: var(--teal);
             text-decoration: none;
+            letter-spacing: -0.02em;
         }
-        .nav-links a {
-            color: var(--text-secondary);
+        nav .nav-links a {
+            color: rgba(255,255,255,0.85);
             text-decoration: none;
-            margin-left: 24px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            margin-left: 1.5rem;
+            transition: color 0.2s;
         }
-        .nav-links a:hover { color: var(--teal); }
+        nav .nav-links a:hover {
+            color: #fff;
+        }
 
-        /* Hero */
+        /* --- Hero --- */
         .hero {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 80px 24px 60px;
+            background: linear-gradient(135deg, #0D7377 0%, #0a5c5f 100%);
+            color: #fff;
             text-align: center;
+            padding: 5rem 1.5rem 4.5rem;
         }
         .hero h1 {
             font-size: 3rem;
             font-weight: 800;
-            color: var(--text);
-            margin-bottom: 16px;
-            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.75rem;
         }
-        .hero h1 span { color: var(--teal); }
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 40px;
+        .hero .tagline {
+            font-size: 1.35rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
         }
-        .badge-row {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
+        .hero .description {
+            max-width: 620px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            opacity: 0.85;
         }
-        .badge-row img { height: 52px; }
+        .hero .cta-button {
+            display: inline-block;
+            background: #E85D4A;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.9rem 2.2rem;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .hero .cta-button:hover {
+            background: #d4503f;
+            transform: translateY(-1px);
+        }
 
-        /* Features */
+        /* --- Features --- */
         .features {
-            max-width: 1100px;
+            max-width: 960px;
             margin: 0 auto;
-            padding: 60px 24px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
+            padding: 4.5rem 1.5rem;
         }
-        .feature {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+        }
+        .features .subtitle {
+            text-align: center;
+            color: #718096;
+            font-size: 1.05rem;
+            margin-bottom: 3rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2rem;
+        }
+        .feature-card {
+            background: #f7f8fa;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(13, 115, 119, 0.1);
         }
         .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
+            width: 48px;
+            height: 48px;
+            background: #0D7377;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
         }
-        .feature h3 {
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .feature-card h3 {
             font-size: 1.15rem;
-            margin-bottom: 8px;
-            color: var(--text);
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
         }
-        .feature p {
-            color: var(--text-secondary);
+        .feature-card p {
+            color: #4a5568;
             font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        /* Pricing */
-        .pricing-section {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 60px 24px;
+        /* --- Pricing --- */
+        .pricing {
+            background: #fff;
+            padding: 4.5rem 1.5rem;
             text-align: center;
         }
-        .pricing-section h2 {
+        .pricing h2 {
             font-size: 2rem;
-            margin-bottom: 8px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
         }
-        .pricing-section > p {
-            color: var(--text-secondary);
-            margin-bottom: 40px;
+        .pricing .subtitle {
+            color: #718096;
+            font-size: 1.05rem;
+            margin-bottom: 3rem;
         }
-        .pricing-cards {
+        .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            max-width: 900px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            max-width: 960px;
             margin: 0 auto;
         }
         .pricing-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-            text-align: left;
+            background: #f7f8fa;
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .pricing-card.popular {
-            border: 2px solid var(--teal);
+        .pricing-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(13, 115, 119, 0.1);
         }
-        .pricing-card h3 { font-size: 1.3rem; margin-bottom: 4px; }
-        .pricing-card .price {
-            font-size: 2rem;
+        .pricing-card-featured {
+            background: #fff;
+            border: 2px solid #0D7377;
+            box-shadow: 0 4px 16px rgba(13, 115, 119, 0.15);
+        }
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #E85D4A;
+            color: #fff;
+            font-size: 0.75rem;
             font-weight: 700;
-            color: var(--teal);
-            margin-bottom: 16px;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
-        .pricing-card .price span {
+        .pricing-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 0.75rem;
+        }
+        .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0D7377;
+            margin-bottom: 1.25rem;
+        }
+        .price span {
             font-size: 1rem;
             font-weight: 400;
-            color: var(--text-secondary);
+            color: #718096;
         }
         .pricing-card ul {
             list-style: none;
             padding: 0;
+            margin: 0 0 1.5rem;
+            text-align: left;
         }
-        .pricing-card ul li {
-            padding: 6px 0;
-            color: var(--text-secondary);
+        .pricing-card li {
+            padding: 0.4rem 0;
+            font-size: 0.95rem;
+            color: #4a5568;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .pricing-card li:last-child {
+            border-bottom: none;
+        }
+        .pricing-card li::before {
+            content: "\2713 ";
+            color: #0D7377;
+            font-weight: 700;
+            margin-right: 0.4rem;
+        }
+        .pricing-btn {
+            display: inline-block;
+            padding: 0.7rem 1.8rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+            background: #0D7377;
+            color: #fff;
+        }
+        .pricing-btn:hover {
+            background: #0a5c5f;
+            transform: translateY(-1px);
+        }
+        .pricing-btn-outline {
+            background: transparent;
+            color: #0D7377;
+            border: 2px solid #0D7377;
+        }
+        .pricing-btn-outline:hover {
+            background: #0D7377;
+            color: #fff;
+        }
+        .pricing-note {
+            margin-top: 2rem;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        /* --- How It Works --- */
+        .how-it-works {
+            background: #f7f8fa;
+            padding: 4.5rem 1.5rem;
+        }
+        .how-it-works .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .how-it-works h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 2.5rem;
+        }
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+        }
+        .step-number {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: #0D7377;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .step-content h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 0.25rem;
+        }
+        .step-content p {
+            color: #4a5568;
             font-size: 0.95rem;
         }
-        .pricing-card ul li::before {
-            content: "\2713 ";
-            color: var(--teal);
-            font-weight: 700;
-        }
 
-        /* CTA */
-        .cta {
+        /* --- Download --- */
+        .download {
             text-align: center;
-            padding: 80px 24px;
+            padding: 4.5rem 1.5rem;
         }
-        .cta h2 {
+        .download h2 {
             font-size: 2rem;
-            margin-bottom: 12px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 0.75rem;
         }
-        .cta p {
-            color: var(--text-secondary);
-            margin-bottom: 32px;
+        .download p {
+            color: #718096;
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .store-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .store-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #1a202c;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            transition: background 0.2s;
+        }
+        .store-badge:hover {
+            background: #2d3748;
+        }
+        .store-badge svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
+        .store-badge .badge-text {
+            text-align: left;
+        }
+        .store-badge .badge-text small {
+            display: block;
+            font-size: 0.65rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .store-badge .badge-text span {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        .wear-os-note {
+            margin-top: 1.25rem;
+            color: #718096;
+            font-size: 0.9rem;
         }
 
-        /* Footer */
+        /* --- Footer --- */
         footer {
-            max-width: 1100px;
+            background: #1a202c;
+            color: rgba(255,255,255,0.7);
+            padding: 2.5rem 1.5rem;
+        }
+        .footer-content {
+            max-width: 960px;
             margin: 0 auto;
-            padding: 40px 24px;
-            border-top: 1px solid #e5e5e5;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 16px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            gap: 1rem;
         }
-        footer a {
-            color: var(--text-secondary);
+        .footer-brand {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
             text-decoration: none;
-            margin-left: 20px;
+            margin-left: 1.5rem;
+            font-size: 0.9rem;
+            transition: color 0.2s;
         }
-        footer a:hover { color: var(--teal); }
+        .footer-links a:hover {
+            color: #fff;
+        }
+        .footer-copy {
+            width: 100%;
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+        }
 
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1.05rem; }
-            .features { grid-template-columns: 1fr; }
-            nav { flex-direction: column; gap: 12px; }
+        /* --- App icon (nav + hero) --- */
+        nav .logo { display: inline-flex; align-items: center; gap: 0.6rem; }
+        nav .logo .logo-icon { width: 32px; height: 32px; border-radius: 8px; }
+        .hero-icon {
+            width: 96px; height: 96px; border-radius: 22px;
+            display: block; margin: 0 auto 1.25rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+        }
+
+        /* --- Screenshots --- */
+        .screenshots { background: #f7f8fa; padding: 4.5rem 1.5rem; text-align: center; }
+        .screenshots h2 { font-size: 2rem; font-weight: 700; color: #1a202c; margin-bottom: 0.5rem; }
+        .screenshots .subtitle { color: #718096; font-size: 1.05rem; margin-bottom: 3rem; }
+        .shots-grid {
+            display: flex; gap: 1.25rem; max-width: 1100px; margin: 0 auto;
+            overflow-x: auto; padding-bottom: 1rem; justify-content: center;
+            scroll-snap-type: x mandatory;
+        }
+        .shots-grid img {
+            flex: 0 0 auto; width: 240px; border-radius: 16px;
+            box-shadow: 0 8px 28px rgba(13,115,119,0.18); scroll-snap-align: center;
+        }
+        @media (max-width: 768px) {
+            .screenshots { padding: 3rem 1rem; }
+            .screenshots h2 { font-size: 1.6rem; }
+            .shots-grid { justify-content: flex-start; }
+            .shots-grid img { width: 200px; }
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .hero { padding: 3.5rem 1.25rem 3rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero .tagline { font-size: 1.1rem; }
+            .hero .description { font-size: 0.95rem; }
+            .features { padding: 3rem 1.25rem; }
+            .features h2, .how-it-works h2, .download h2 { font-size: 1.6rem; }
+            .features-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+            .pricing { padding: 3rem 1.25rem; }
+            .pricing h2 { font-size: 1.6rem; }
+            .pricing-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+            .how-it-works { padding: 3rem 1.25rem; }
+            .download { padding: 3rem 1.25rem; }
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-links a { margin: 0 0.75rem; }
+        }
+
+        @media (max-width: 480px) {
+            nav { flex-direction: column; gap: 0.75rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .store-badges { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
+<!-- Navigation -->
 <nav>
-    <a href="/" class="logo">CareRing</a>
+    <a href="/" class="logo"><img src="/img/app-icon.png" alt="CareRing icon" class="logo-icon">CareRing</a>
     <div class="nav-links">
         <a href="#features">Features</a>
         <a href="#pricing">Pricing</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#download">Download</a>
     </div>
 </nav>
 
+<!-- Hero Section -->
 <section class="hero">
-    <h1>Better care, <span>together</span></h1>
-    <p>CareRing helps families coordinate caregiving — track medications, assign tasks, share updates, and stay connected. All in one free app.</p>
-    <div class="badge-row">
-        <a href="https://play.google.com/store/apps/details?id=app.carering" target="_blank">
-            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="52">
-        </a>
-    </div>
+    <img src="/img/app-icon.png" alt="CareRing app icon" class="hero-icon">
+    <h1>CareRing</h1>
+    <p class="tagline">Family Caregiving, Coordinated</p>
+    <p class="description">
+        Coordinate care for your loved ones with your family. Track medications,
+        manage tasks, schedule appointments, and stay connected &mdash; all in one place.
+    </p>
+    <a href="#download" class="cta-button">Get the App</a>
 </section>
 
+<!-- Features Section -->
 <section class="features" id="features">
-    <div class="feature">
-        <div class="feature-icon">💊</div>
-        <h3>Medication Tracking</h3>
-        <p>Track medications with dosages and schedules. Get reminders, log doses, and see the full history. Generate care reports for doctor visits.</p>
-    </div>
-    <div class="feature">
-        <div class="feature-icon">📋</div>
-        <h3>Task Coordination</h3>
-        <p>Create tasks, set priorities, assign to family members. Everyone sees what needs to be done and what's already covered.</p>
-    </div>
-    <div class="feature">
-        <div class="feature-icon">💬</div>
-        <h3>Daily Check-Ins</h3>
-        <p>Record mood, pain, sleep, appetite, and mobility. Spot trends and keep remote family members in the loop.</p>
-    </div>
-    <div class="feature">
-        <div class="feature-icon">📝</div>
-        <h3>Shared Care Notes</h3>
-        <p>Keep a shared journal of observations and important details. Pin critical notes so they're always visible to the team.</p>
-    </div>
-    <div class="feature">
-        <div class="feature-icon">🏥</div>
-        <h3>Medical Info Hub</h3>
-        <p>Emergency contacts, conditions, and allergies in one secure place. Accessible to every circle member when it matters.</p>
-    </div>
-    <div class="feature">
-        <div class="feature-icon">👨‍👩‍👧‍👦</div>
-        <h3>Built for Families</h3>
-        <p>Up to 5 members per circle for free. Invite with a code. Everyone sees the same dashboard. Works offline.</p>
+    <h2>Everything Your Care Team Needs</h2>
+    <p class="subtitle">Simple tools that keep everyone on the same page.</p>
+    <div class="features-grid">
+
+        <!-- Medication Tracking -->
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3"/>
+                    <line x1="9" y1="9" x2="15" y2="9"/>
+                    <line x1="9" y1="13" x2="15" y2="13"/>
+                    <line x1="9" y1="17" x2="12" y2="17"/>
+                </svg>
+            </div>
+            <h3>Medication Tracking &amp; Smart Reminders</h3>
+            <p>Never miss a dose. Set schedules, receive reminders, and log medications with a single tap. Your whole care team sees the status in real time.</p>
+        </div>
+
+        <!-- Task Coordination -->
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
+                    <rect x="9" y="3" width="6" height="4" rx="1"/>
+                    <path d="M9 14l2 2 4-4"/>
+                </svg>
+            </div>
+            <h3>Task Assignment &amp; Coordination</h3>
+            <p>Create tasks, assign them to family members, and track completion. From grocery runs to doctor visits, nothing falls through the cracks.</p>
+        </div>
+
+        <!-- Appointments -->
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="18" rx="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                    <circle cx="12" cy="15" r="1"/>
+                </svg>
+            </div>
+            <h3>Appointment Management</h3>
+            <p>Keep all medical appointments in one shared calendar. Add notes, set reminders, and make sure someone is always available to help.</p>
+        </div>
+
+        <!-- Daily Check-ins -->
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/>
+                </svg>
+            </div>
+            <h3>Daily Check-ins &amp; Health Monitoring</h3>
+            <p>Record mood, pain levels, sleep quality, and notes each day. Spot trends over time and share updates with the entire care circle.</p>
+        </div>
+
+        <!-- Wear OS -->
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="7"/>
+                    <polyline points="12 9 12 12 14 14"/>
+                    <path d="M9 2h6l1 5H8L9 2z"/>
+                    <path d="M9 22h6l1-5H8l1 5z"/>
+                </svg>
+            </div>
+            <h3>Wear OS Support</h3>
+            <p>Get medication reminders and log doses right from your wrist. The standalone watch app works even when your phone isn't nearby.</p>
+        </div>
+
     </div>
 </section>
 
-<section class="pricing-section" id="pricing">
-    <h2>Simple, fair pricing</h2>
-    <p>Most families never need to pay. Upgrade only when you need more.</p>
-    <div class="pricing-cards">
+<!-- Pricing Section -->
+<section class="pricing" id="pricing">
+    <h2>Simple, Transparent Pricing</h2>
+    <p class="subtitle">Start free. Upgrade when your care team grows.</p>
+    <div class="pricing-grid">
         <div class="pricing-card">
             <h3>Free</h3>
-            <div class="price">$0 <span>forever</span></div>
+            <div class="price">$0<span>/month</span></div>
             <ul>
-                <li>2 care circles</li>
-                <li>5 members per circle</li>
-                <li>All core features</li>
-                <li>Medication tracking & reminders</li>
-                <li>Tasks, check-ins, notes</li>
-                <li>Medical info hub</li>
+                <li>2 care circles, 5 members each</li>
+                <li>Medication tracking &amp; reminders</li>
+                <li>Tasks, calendar &amp; daily check-ins</li>
+                <li>Care notes &amp; medical info hub</li>
                 <li>Push notifications</li>
             </ul>
+            <a href="#download" class="pricing-btn pricing-btn-outline">Get Started</a>
         </div>
-        <div class="pricing-card popular">
+        <div class="pricing-card">
             <h3>Family</h3>
-            <div class="price">$3.99 <span>/month</span></div>
+            <div class="price">$3.99<span>/month</span></div>
             <ul>
-                <li>5 care circles</li>
-                <li>10 members per circle</li>
-                <li>Everything in Free</li>
+                <li>Up to 5 care circles, 10 members each</li>
+                <li>All Free features</li>
                 <li>PDF care reports</li>
                 <li>Data export</li>
                 <li>Ad-free experience</li>
             </ul>
+            <a href="#download" class="pricing-btn pricing-btn-outline">Get Started</a>
         </div>
-        <div class="pricing-card">
+        <div class="pricing-card pricing-card-featured">
+            <div class="pricing-badge">Most Popular</div>
             <h3>Premium</h3>
-            <div class="price">$7.99 <span>/month</span></div>
+            <div class="price">$7.99<span>/month</span></div>
             <ul>
-                <li>Unlimited circles & members</li>
-                <li>Everything in Family</li>
+                <li>Unlimited care circles &amp; members</li>
+                <li>All Family features</li>
                 <li>Priority support</li>
                 <li>Early access to new features</li>
             </ul>
+            <a href="#download" class="pricing-btn">Get Started</a>
+        </div>
+    </div>
+    <p class="pricing-note">All subscriptions are billed monthly through Google Play. Cancel anytime.</p>
+</section>
+
+<!-- How It Works -->
+<section class="how-it-works" id="how-it-works">
+    <div class="container">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Create your Care Circle</h3>
+                    <p>Sign up and create a circle for the person you're caring for. Give it a name and invite family members to join.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Add medications, tasks &amp; appointments</h3>
+                    <p>Enter the care recipient's medications and schedules, create recurring tasks, and log upcoming appointments.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Coordinate together</h3>
+                    <p>Everyone in the circle sees updates in real time. Assign responsibilities, check off tasks, and log daily check-ins to stay in sync.</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<section class="cta">
-    <h2>Your family's care, organized</h2>
-    <p>Join thousands of families who coordinate care with CareRing.</p>
-    <div class="badge-row">
-        <a href="https://play.google.com/store/apps/details?id=app.carering" target="_blank">
-            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="52">
-        </a>
+<!-- Screenshots -->
+<section class="screenshots" id="screenshots">
+    <h2>See CareRing in Action</h2>
+    <p class="subtitle">The whole care picture &mdash; on your phone and your wrist.</p>
+    <div class="shots-grid">
+        <img src="/img/shot-01-dashboard.png" alt="CareRing dashboard: today's medications, quick actions and daily check-in" loading="lazy">
+        <img src="/img/shot-02-medications.png" alt="CareRing medications screen with schedules and reminders" loading="lazy">
+        <img src="/img/shot-03-tasks.png" alt="CareRing tasks screen for coordinating caregiving duties" loading="lazy">
+        <img src="/img/shot-04-timeline.png" alt="CareRing timeline of shared care activity" loading="lazy">
     </div>
 </section>
 
+<!-- Download Section -->
+<section class="download" id="download">
+    <h2>Start Coordinating Care Today</h2>
+    <p>Free to download. Available on Android phones and Wear OS watches.</p>
+    <div class="store-badges">
+        <a href="https://play.google.com/store/apps/details?id=app.carering" class="store-badge" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24">
+                <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zM14.852 13.06l2.34 2.34-10.848 6.15 8.508-8.49zM20.16 10.6c.6.34.84.94.84 1.4s-.24 1.06-.84 1.4l-2.76 1.56-2.58-2.58 2.58-2.58 2.76 1.56zM6.344 3.444L17.192 9.6l-2.34 2.34-8.508-8.496z"/>
+            </svg>
+            <div class="badge-text">
+                <small>Get it on</small>
+                <span>Google Play</span>
+            </div>
+        </a>
+    </div>
+    <p class="wear-os-note">Also available as a standalone Wear OS app.</p>
+</section>
+
+<!-- Footer -->
 <footer>
-    <span>&copy; 2026 CareRing. Vasil Nonchev, Sofia, Bulgaria.</span>
-    <div>
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/terms">Terms of Service</a>
-        <a href="mailto:support@carering.app">Contact</a>
+    <div class="footer-content">
+        <div class="footer-brand">CareRing</div>
+        <div class="footer-links">
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+            <a href="/delete-account">Delete Account</a>
+        </div>
+        <div class="footer-copy">
+            &copy; 2026 CareRing. All rights reserved.
+        </div>
     </div>
 </footer>
 
