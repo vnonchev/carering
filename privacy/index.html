@@ -22,7 +22,7 @@
 <a href="/" class="back">&larr; Back to CareRing</a>
 
 <h1>Privacy Policy</h1>
-<p class="updated">Last updated: April 15, 2026</p>
+<p class="updated">Last updated: July 8, 2026</p>
 
 <p>CareRing ("we", "us", "our") is a family caregiver coordination app operated by Vasil Nonchev, based in Sofia, Bulgaria. This Privacy Policy explains how we collect, use, store, and protect your personal data when you use the CareRing mobile application and related services.</p>
 
@@ -64,9 +64,17 @@ Email: <a href="mailto:privacy@carering.app">privacy@carering.app</a></p>
     <tr><td>App version, device model, OS version</td><td>Debugging and compatibility</td></tr>
 </table>
 
+<h3>2.4 Analytics Data (opt-in, off by default)</h3>
+<p>The app includes Firebase Analytics for anonymous product and usage metrics. Analytics is <strong>disabled by default</strong> and runs only if you explicitly opt in (consent under the GDPR and ePrivacy rules). You can withdraw that consent at any time in the app settings. The device advertising ID (AD_ID) may be collected only while analytics is enabled. No health or care data is ever sent to analytics.</p>
+<table>
+    <tr><th>Data</th><th>Purpose</th></tr>
+    <tr><td>Anonymous usage events (screens viewed, features used)</td><td>Understanding how the app is used, to improve it</td></tr>
+    <tr><td>Advertising ID (AD_ID)</td><td>Analytics identifier, collected only while analytics is enabled; never used for advertising</td></tr>
+</table>
+
 <h2>3. Legal Basis for Processing (GDPR Article 6)</h2>
 <ul>
-    <li><strong>Consent</strong> — You voluntarily provide health and care data by entering it into the app.</li>
+    <li><strong>Consent</strong> — You voluntarily provide health and care data by entering it into the app. Optional analytics (Section 2.4) runs only with your explicit opt-in consent.</li>
     <li><strong>Contract performance</strong> — Processing is necessary to provide the CareRing service you signed up for.</li>
     <li><strong>Legitimate interest</strong> — Crash reporting and technical diagnostics to maintain service quality.</li>
 </ul>
@@ -100,13 +108,16 @@ Email: <a href="mailto:privacy@carering.app">privacy@carering.app</a></p>
     <tr><td>Google Firebase (Authentication)</td><td>User sign-in</td><td>Email, name, profile photo</td><td>EU (europe-west1)</td></tr>
     <tr><td>Google Firebase (Cloud Messaging)</td><td>Push notifications</td><td>Device token, notification content</td><td>EU</td></tr>
     <tr><td>Google Firebase (Crashlytics)</td><td>Crash reporting</td><td>Device info, crash logs (no health data)</td><td>EU</td></tr>
-    <tr><td>RevenueCat</td><td>Subscription management</td><td>Anonymous user ID, purchase receipts</td><td>US (Standard Contractual Clauses)</td></tr>
+    <tr><td>Google Firebase (Analytics)</td><td>Anonymous usage metrics — only if you opt in (Section 2.4)</td><td>Anonymous usage events, advertising ID (no health data)</td><td>EU/US (SCCs / EU-US Data Privacy Framework)</td></tr>
+    <tr><td>Supabase</td><td>Managed database hosting</td><td>All app data (encrypted at rest)</td><td>Switzerland (eu-central-2, Zurich) — EU adequacy decision</td></tr>
+    <tr><td>RevenueCat</td><td>Subscription management</td><td>Anonymous user ID, purchase receipts</td><td>US (SCCs / EU-US Data Privacy Framework)</td></tr>
 </table>
-<p>We do not share health or care data with any third party. Health data is stored only on our own servers and your device.</p>
+<p>We do not share health or care data with any third party for its own use — the providers above act only as processors on our behalf. Health data is stored only on our EU-hosted application servers, our Swiss-hosted database (see Section 6), and your device.</p>
 
 <h2>6. Data Storage & Security</h2>
 <ul>
-    <li><strong>Server:</strong> Google Cloud Platform, region <code>europe-west1</code> (Belgium, EU). All data encrypted at rest (AES-256-GCM) and in transit (TLS 1.3).</li>
+    <li><strong>Application servers:</strong> Google Cloud Platform, region <code>europe-west1</code> (Belgium, EU). All data encrypted at rest (AES-256-GCM) and in transit (TLS 1.3).</li>
+    <li><strong>Database:</strong> Hosted by Supabase, region <code>eu-central-2</code> (Zurich, Switzerland — covered by a European Commission adequacy decision; see Section 11). Data encrypted at rest and in transit (TLS 1.3).</li>
     <li><strong>Device:</strong> Local database encrypted with SQLCipher (AES-256). Sensitive preferences encrypted via Android Keystore.</li>
     <li><strong>Authentication:</strong> Firebase Authentication with Google Sign-In. We never see or store your Google password.</li>
     <li><strong>Access control:</strong> Role-based access within care circles (Owner, Admin, Member, Viewer).</li>
@@ -139,15 +150,16 @@ Email: <a href="mailto:privacy@carering.app">privacy@carering.app</a></p>
     <li>Delete your user profile and all personal data</li>
     <li>Remove you from all care circles</li>
     <li>Delete circles you own (and all data within them)</li>
-    <li>Revoke your authentication credentials</li>
+    <li>Delete your authentication identity held by our authentication provider (Firebase Authentication)</li>
+    <li>Delete your subscription record held by our subscription processor (RevenueCat)</li>
 </ul>
-<p>Deletion is permanent and cannot be undone.</p>
+<p>Deletion is permanent and cannot be undone. After deletion, no account identity or subscription record about you persists with us or with these providers.</p>
 
 <h2>10. Children's Privacy</h2>
 <p>CareRing is not intended for use by children under 18. We do not knowingly collect data from children. If you believe a child has provided us with personal data, please contact us and we will delete it.</p>
 
 <h2>11. International Data Transfers</h2>
-<p>Your data is primarily stored in the EU (GCP europe-west1, Belgium). RevenueCat processes subscription data in the US under appropriate safeguards (Standard Contractual Clauses). No health data leaves the EU.</p>
+<p>Our application servers run in the EU on Google Cloud Platform (<code>europe-west1</code>, Belgium). Our database is hosted by Supabase in Switzerland (<code>eu-central-2</code>, Zurich). Switzerland is not part of the EU/EEA, but the European Commission has granted it an adequacy decision, so storing your data there is a lawful transfer under GDPR Article 45 and your data receives protection equivalent to EU standards. Beyond this, we do not transfer your personal data to countries without adequate protection, except that Google Firebase and RevenueCat may process limited technical, opt-in analytics, and subscription data in the US under appropriate safeguards (Standard Contractual Clauses and/or the EU-US Data Privacy Framework). No health data leaves the EU or Switzerland.</p>
 
 <h2>12. Changes to This Policy</h2>
 <p>We may update this Privacy Policy from time to time. We will notify you of material changes through the app or by email. The "Last updated" date at the top reflects the most recent revision.</p>
