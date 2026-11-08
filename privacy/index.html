@@ -24,7 +24,7 @@
 <h1>Privacy Policy</h1>
 <p class="updated">Last updated: November 8, 2026</p>
 
-<p>CareRing ("we", "us", "our") is a family caregiver coordination app operated by Vasil Nonchev, based in Sofia, Bulgaria. This Privacy Policy explains how we collect, use, store, and protect your personal data when you use the CareRing mobile application and related services.</p>
+<p>CareRing ("we", "us", "our") is a family caregiver coordination app operated by Vasil Nonchev, based in Sofia, Bulgaria. This Privacy Policy explains how we collect, use, store, and protect your personal data when you use the CareRing mobile application, the Wear OS companion app and related services.</p>
 
 <p>We take your privacy seriously, especially given the sensitive nature of health-related information. We comply with the European Union General Data Protection Regulation (GDPR) and applicable Bulgarian data protection laws.</p>
 
@@ -50,6 +50,7 @@ Email: <a href="mailto:privacy@carering.app">privacy@carering.app</a></p>
     <tr><td>Medication names, dosages, schedules, prescriber</td><td>Medication tracking and reminders</td></tr>
     <tr><td>Medication administration logs</td><td>Adherence tracking</td></tr>
     <tr><td>Medication inventory (stock quantities, batches, expiry dates, storage locations, refills)</td><td>Stock tracking and low-stock / expiry alerts</td></tr>
+    <tr><td>Storage locations you name (for example "Kitchen Cabinet", "Bathroom")</td><td>Organizing medication inventory by room. These are only labels: we never collect GPS or location data</td></tr>
     <tr><td>Daily check-ins (mood, pain, sleep, appetite, mobility)</td><td>Wellness monitoring</td></tr>
     <tr><td>Medical conditions (name, diagnosis date) and allergies (allergen, severity)</td><td>Medical information hub</td></tr>
     <tr><td>Emergency contacts and emergency notes</td><td>Quick access to important contacts</td></tr>
@@ -140,7 +141,8 @@ Email: <a href="mailto:privacy@carering.app">privacy@carering.app</a></p>
 <ul>
     <li><strong>Application servers:</strong> Google Cloud Platform, region <code>europe-west1</code> (Belgium, EU). Data is encrypted in transit (TLS 1.2+). Sensitive personal fields are additionally encrypted at the application layer (AES-256-GCM) before storage, and data at rest is encrypted by our cloud database and storage providers.</li>
     <li><strong>Database:</strong> Hosted by Supabase, region <code>eu-central-2</code> (Zurich, Switzerland — covered by a European Commission adequacy decision; see Section 11). Data encrypted at rest by Supabase and in transit (TLS 1.2+).</li>
-    <li><strong>Device:</strong> Local database encrypted with SQLCipher (AES-256). Sensitive preferences are encrypted using the Android Keystore where available.</li>
+    <li><strong>Device:</strong> Local database encrypted with SQLCipher (AES-256). Sensitive preferences are encrypted using the Android Keystore where available. If the Keystore on a device does not work, the app keeps a few account identifiers without this extra encryption until it works again; the device's own storage protection still applies.</li>
+    <li><strong>Wear OS watch:</strong> The watch app receives your medication list, schedules, instructions, care recipient names and upcoming appointments from your phone. It has no internet access of its own. It keeps this data in encrypted storage on the watch; if the watch's Keystore does not work, the data is kept without this extra encryption until it works again. Google Play services, which carries the data between phone and watch, keeps its own copy in its storage on both devices.</li>
     <li><strong>Authentication:</strong> Firebase Authentication with Google Sign-In. We never see or store your Google password.</li>
     <li><strong>Access control:</strong> Role-based access within care circles (Owner, Admin, Member, Viewer).</li>
 </ul>
@@ -170,11 +172,12 @@ Email: <a href="mailto:privacy@carering.app">privacy@carering.app</a></p>
 <h2>9. Account Deletion</h2>
 <p>You can delete your account at any time from Settings within the app. This will:</p>
 <ul>
-    <li>Permanently delete the care circles you own and all data within them</li>
+    <li>Permanently delete the care circles you own, and the households where you are the only owner, with all data within them (including medication inventory)</li>
     <li>Permanently delete your user profile and account data</li>
-    <li>Remove you from care circles owned by other members. Your past entries in those shared circles (for example, activity and inventory history) are kept for the remaining members' records, but your name is removed from them</li>
+    <li>Remove you from care circles and households owned by other members. Your past entries in those shared circles (for example, activity and inventory history) are kept for the remaining members' records, but your name is removed from them</li>
     <li>Delete your authentication identity held by our authentication provider (Firebase Authentication)</li>
     <li>Request deletion of your subscription record held by our subscription processor (RevenueCat)</li>
+    <li>Remove the app's local data from your phone and clear the data shown on your watch</li>
 </ul>
 <p>Deletion is permanent and cannot be undone. Deletion of the records held by Firebase and RevenueCat is carried out on a best-effort basis immediately after your account data is removed. Some non-identifying entries in shared care circles may be retained — without your name — so that the other members' care history stays intact.</p>
 
