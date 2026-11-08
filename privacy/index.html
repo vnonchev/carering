@@ -22,7 +22,7 @@
 <a href="/" class="back">&larr; Back to CareRing</a>
 
 <h1>Privacy Policy</h1>
-<p class="updated">Last updated: November 7, 2026</p>
+<p class="updated">Last updated: November 8, 2026</p>
 
 <p>CareRing ("we", "us", "our") is a family caregiver coordination app operated by Vasil Nonchev, based in Sofia, Bulgaria. This Privacy Policy explains how we collect, use, store, and protect your personal data when you use the CareRing mobile application and related services.</p>
 
@@ -67,6 +67,7 @@ Email: <a href="mailto:privacy@carering.app">privacy@carering.app</a></p>
     <tr><td>App version, device model, OS version</td><td>Debugging and compatibility</td></tr>
     <tr><td>Time zone and notification preferences</td><td>Scheduling reminders at the right local time</td></tr>
     <tr><td>Subscription status (via RevenueCat)</td><td>Managing your plan and entitlements</td></tr>
+    <tr><td>Your account identifier in our server logs and crash reports</td><td>Tracing a support request or a fault back to your own activity, so we can fix it without asking you for more information. This identifier is a random account reference — it is not your name or your email address, and it is never linked to health or care content in the log. Server logs are kept for 30 days and crash reports for 90 days (Section 7).</td></tr>
 </table>
 
 <h3>2.4 Analytics Data (opt-in, off by default)</h3>
@@ -77,18 +78,32 @@ Email: <a href="mailto:privacy@carering.app">privacy@carering.app</a></p>
     <tr><td>Anonymous app-instance identifier</td><td>Distinguishing analytics sessions; not linked to any advertising identifier</td></tr>
 </table>
 
+<h3>2.5 Problem Reports You Send Us</h3>
+<p>If you use <strong>Settings &rarr; Report a problem</strong>, the app prepares an email to <a href="mailto:support@carering.app">support@carering.app</a> and shows you its complete contents first. Nothing is transmitted until you send it yourself from your own email app, and you can edit or delete any part of it before you do.</p>
+<p>The prepared email contains a short report reference, your app version and build, your device model and Android version, your app language, your account identifier, your care circle identifier, and the time of your last successful sync. It deliberately contains <strong>no medication names, no names of people, no notes and no tasks</strong>, and we do not capture a screenshot or a recording of your screen. Anything else in the message is what you chose to write. We keep problem reports only as long as needed to resolve the issue and any follow-up with you.</p>
+
+<h3>2.6 People You Invite to a Household</h3>
+<p>When you invite someone to your household by email, we process that person's email address so the invite can reach them, even if they do not use CareRing yet:</p>
+<ul>
+    <li>We send them one invite email through our email provider (Resend, see Section 5.2). The email is generic: it contains no household name, no name of yours and no care data.</li>
+    <li>On the invite we store only a one-way code (a keyed hash) of the address, used to match the invite when they sign in, and may store a partly hidden, encrypted form of it (for example a***b@gmail.com) so you can see whom you invited. The full address is never stored on the invite.</li>
+    <li>To deliver the email, the full address is kept, encrypted, in our sending queue for up to 2 days after delivery (up to 30 days if delivery fails).</li>
+    <li>An unanswered invite expires after 7 days. Invite records are deleted when the household is deleted, or when you or the invited person delete a CareRing account.</li>
+</ul>
+<p>We use the address only to deliver and match this invite. The invited person can ask us to delete the invite at any time (Section 13).</p>
+
 <h2>3. Legal Basis for Processing (GDPR Article 6)</h2>
 <ul>
     <li><strong>Consent</strong> — You voluntarily provide health and care data by entering it into the app. Optional analytics (Section 2.4) runs only with your explicit opt-in consent.</li>
     <li><strong>Contract performance</strong> — Processing is necessary to provide the CareRing service you signed up for.</li>
-    <li><strong>Legitimate interest</strong> — Crash reporting and technical diagnostics to maintain service quality.</li>
+    <li><strong>Legitimate interest</strong> — Crash reporting and technical diagnostics to maintain service quality; delivering a household invite to the email address you enter (Section 2.6).</li>
 </ul>
 <p>Health data is processed under GDPR Article 9(2)(a) — explicit consent. You may withdraw consent at any time by deleting your account.</p>
 
 <h2>4. How We Use Your Data</h2>
 <ul>
     <li>Display care information to members of your care circles</li>
-    <li>Send push notifications and emails for medication reminders, task assignments, care updates, and optional daily digests</li>
+    <li>Send push notifications and emails for medication reminders, task assignments, care updates, and optional daily digests, and the household invite emails you ask us to send</li>
     <li>Synchronize data between your devices and care circle members</li>
     <li>Generate care reports (PDF export) when you request them</li>
     <li>Monitor app crashes and fix bugs</li>
@@ -108,14 +123,14 @@ Email: <a href="mailto:privacy@carering.app">privacy@carering.app</a></p>
 <p>When you join a care circle, other members of that circle can see the care data within it (medications, tasks, check-ins, notes, medical info). You control which circles you join and can leave at any time.</p>
 
 <h3>5.2 Third-party service providers</h3>
-<p>The providers below act only as processors on our behalf. Because Google Firebase and RevenueCat are operated by Google and RevenueCat on their own global infrastructure, some of this data may be processed outside the EU/Switzerland, including in the United States, under appropriate safeguards.</p>
+<p>The providers below act only as processors on our behalf. Because Google Firebase, Resend and RevenueCat are operated by Google, Resend and RevenueCat on their own global infrastructure, some of this data may be processed outside the EU/Switzerland, including in the United States, under appropriate safeguards.</p>
 <table>
     <tr><th>Provider</th><th>Purpose</th><th>Data shared</th><th>Location</th></tr>
     <tr><td>Google Firebase (Authentication)</td><td>User sign-in</td><td>Email, name, profile photo</td><td>Google infrastructure, may include the US (SCCs / EU-US Data Privacy Framework)</td></tr>
     <tr><td>Google Firebase (Cloud Messaging)</td><td>Push notifications</td><td>Device token, notification content</td><td>Google infrastructure, may include the US (SCCs / EU-US Data Privacy Framework)</td></tr>
     <tr><td>Google Firebase (Crashlytics)</td><td>Crash reporting</td><td>Device info, crash logs (no health data)</td><td>Google infrastructure, may include the US (SCCs / EU-US Data Privacy Framework)</td></tr>
     <tr><td>Google Firebase (Analytics)</td><td>Anonymous usage metrics — only if you opt in (Section 2.4)</td><td>Anonymous usage events (no health data, no advertising ID)</td><td>Google infrastructure, may include the US (SCCs / EU-US Data Privacy Framework)</td></tr>
-    <tr><td>Resend (email delivery)</td><td>Sending account, notification, and optional daily-digest emails</td><td>Your email address and email content; daily digests may include care-circle and care-recipient names, recent activity, and adherence summaries</td><td>Sent from the EU (Ireland); Resend is a US company and may process data in the US (SCCs)</td></tr>
+    <tr><td>Resend (email delivery)</td><td>Sending account, notification, and optional daily-digest emails</td><td>Your email address and email content; daily digests may include care-circle and care-recipient names, recent activity, and adherence summaries; for a household invite, the invited person's address (Section 2.6)</td><td>Sent from the EU (Ireland); Resend is a US company and may process data in the US (SCCs)</td></tr>
     <tr><td>Supabase</td><td>Managed database hosting</td><td>All app data (encrypted at rest)</td><td>Switzerland (eu-central-2, Zurich) — EU adequacy decision</td></tr>
     <tr><td>RevenueCat</td><td>Subscription management</td><td>Anonymous user ID, purchase receipts, subscription status</td><td>US (SCCs / EU-US Data Privacy Framework)</td></tr>
 </table>
@@ -136,6 +151,7 @@ Email: <a href="mailto:privacy@carering.app">privacy@carering.app</a></p>
     <li>When you delete your account, the data described in Section 9 is permanently deleted within 30 days.</li>
     <li>Crash reports are retained for 90 days.</li>
     <li>Server logs are retained for 30 days.</li>
+    <li>Household invites: see Section 2.6.</li>
 </ul>
 
 <h2>8. Your Rights (GDPR Articles 15-22)</h2>
